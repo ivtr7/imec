@@ -55,10 +55,11 @@ serve(async (req) => {
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseKey);
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    const AI_API_URL = Deno.env.get("AI_API_URL");
+    const AI_API_KEY = Deno.env.get("AI_API_KEY");
 
-    if (!LOVABLE_API_KEY) {
-      throw new Error("LOVABLE_API_KEY not configured");
+    if (!AI_API_URL || !AI_API_KEY) {
+      throw new Error("AI_API_URL or AI_API_KEY not configured");
     }
 
     // Update session last_seen
@@ -106,11 +107,11 @@ serve(async (req) => {
       messages.push({ role: "user", content: message });
     }
 
-    // Call Lovable AI
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+    // Chamada ao gateway de IA configurável
+    const response = await fetch(AI_API_URL, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        Authorization: `Bearer ${AI_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
