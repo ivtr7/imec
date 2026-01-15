@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* comercIA Design System - Clean Medical Interface */
+
+@layer base {
+  :root {
+    /* Glassmorphism escuro - IMEC */
+    --background: 222 45% 8%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 42% 12% / 0.72;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 222 42% 10% / 0.7;
+    --popover-foreground: 210 40% 96%;
+
+    /* Primários IMEC */
+    --primary: 189 86% 56%;
+    --primary-foreground: 202 100% 12%;
+
+    --secondary: 215 16% 65% / 0.14;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 222 32% 18% / 0.5;
+    --muted-foreground: 215 20% 72%;
+
+    --accent: 193 75% 20% / 0.6;
+    --accent-foreground: 189 86% 72%;
+
+    --destructive: 0 85% 68%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Chat */
+    --chat-user: 189 86% 56%;
+    --chat-user-foreground: 220 47% 6%;
+    --chat-agent: 222 42% 16% / 0.75;
+    --chat-agent-foreground: 210 40% 96%;
+    
+    /* Status */
+    --success: 134 70% 76%;
+    --success-foreground: 140 75% 12%;
+    --warning: 45 97% 58%;
+    --warning-foreground: 230 40% 10%;
+    --urgent: 14 90% 61%;
+    --urgent-foreground: 0 0% 100%;
+
+    --border: 0 0% 100% / 0.1;
+    --input: 0 0% 100% / 0.12;
+    --ring: 189 86% 56%;
+
+    --radius: 1rem;
+
+    /* Sombras */
+    --shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 16px 40px rgba(5, 10, 25, 0.45);
+    --shadow-lg: 0 30px 70px rgba(5, 10, 25, 0.6);
+
+    /* Sidebar */
+    --sidebar-background: 222 42% 10% / 0.85;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 189 86% 56%;
+    --sidebar-primary-foreground: 202 100% 12%;
+    --sidebar-accent: 217 33% 22% / 0.5;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 0 0% 100% / 0.08;
+    --sidebar-ring: 189 86% 56%;
+  }
+
+  .dark {
+    /* Mantém o dark como padrão */
+    --background: 222 45% 8%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 42% 12% / 0.72;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 222 42% 10% / 0.7;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 189 86% 56%;
+    --primary-foreground: 202 100% 12%;
+
+    --secondary: 215 16% 65% / 0.14;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 222 32% 18% / 0.5;
+    --muted-foreground: 215 20% 72%;
+
+    --accent: 193 75% 20% / 0.6;
+    --accent-foreground: 189 86% 72%;
+
+    --destructive: 0 85% 68%;
+    --destructive-foreground: 0 0% 100%;
+
+    --chat-user: 189 86% 56%;
+    --chat-user-foreground: 220 47% 6%;
+    --chat-agent: 222 42% 16% / 0.75;
+    --chat-agent-foreground: 210 40% 96%;
+
+    --border: 0 0% 100% / 0.1;
+    --input: 0 0% 100% / 0.12;
+    --ring: 189 86% 56%;
+
+    --sidebar-background: 222 42% 10% / 0.85;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 189 86% 56%;
+    --sidebar-primary-foreground: 202 100% 12%;
+    --sidebar-accent: 217 33% 22% / 0.5;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 0 0% 100% / 0.08;
+    --sidebar-ring: 189 86% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(140% 60% at 0% 0%, rgba(34, 211, 238, 0.12), transparent 45%),
+      radial-gradient(120% 80% at 100% 10%, rgba(134, 239, 172, 0.12), transparent 40%),
+      radial-gradient(80% 80% at 50% 120%, rgba(15, 23, 42, 0.9), rgba(11, 15, 26, 0.95));
+    min-height: 100vh;
+    color: hsl(var(--foreground));
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.25);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(14px);
+    border-radius: var(--radius);
+  }
+
+  .glass-strong {
+    background: linear-gradient(145deg, rgba(34, 211, 238, 0.14), rgba(134, 239, 172, 0.08), rgba(12, 18, 32, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(16px);
+    border-radius: calc(var(--radius) + 4px);
+  }
+
+  /* Chat bubble styles */
+  .chat-bubble-user {
+    @apply text-chat-user-foreground rounded-2xl rounded-br-md px-4 py-3 max-w-[80%];
+    background: linear-gradient(120deg, #22d3ee, #38f2dd, #86efac);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(34, 211, 238, 0.2);
+    backdrop-filter: blur(12px);
+  }
+
+  .chat-bubble-agent {
+    @apply text-chat-agent-foreground rounded-2xl rounded-bl-md px-4 py-3 max-w-[80%];
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    box-shadow: var(--shadow-sm);
+    border: 1px solid hsl(var(--border));
+    backdrop-filter: blur(14px);
+  }
+
+  /* Typing indicator */
+  .typing-indicator {
+    @apply flex gap-1 items-center px-4 py-3;
+  }
+
+  .typing-indicator span {
+    @apply w-2 h-2 rounded-full;
+    background: linear-gradient(120deg, #22d3ee, #86efac);
+    animation: typing-bounce 1.4s infinite ease-in-out both;
+  }
+
+  .typing-indicator span:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+
+  .typing-indicator span:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+
+  /* Status badges */
+  .status-normal {
+    @apply bg-success/15 text-success px-2.5 py-1 rounded-full text-xs font-semibold border border-success/30;
+  }
+
+  .status-urgent {
+    @apply bg-urgent/20 text-urgent px-2.5 py-1 rounded-full text-xs font-semibold border border-urgent/30;
+  }
+
+  .status-scheduled {
+    @apply bg-success/20 text-success-foreground px-2.5 py-1 rounded-full text-[11px] font-semibold border border-success/25;
+  }
+
+  .status-triage {
+    @apply bg-warning/20 text-warning-foreground px-2.5 py-1 rounded-full text-[11px] font-semibold border border-warning/30;
+  }
+
+  .status-neutral {
+    @apply bg-muted text-muted-foreground px-2.5 py-1 rounded-full text-[11px] font-semibold border border-border;
+  }
+}
+
+@layer utilities {
+  .bg-chat-user {
+    background-color: hsl(var(--chat-user));
+  }
+
+  .text-chat-user-foreground {
+    color: hsl(var(--chat-user-foreground));
+  }
+
+  .bg-chat-agent {
+    background-color: hsl(var(--chat-agent));
+  }
+
+  .text-chat-agent-foreground {
+    color: hsl(var(--chat-agent-foreground));
+  }
+
+  .bg-success {
+    background-color: hsl(var(--success));
+  }
+
+  .text-success {
+    color: hsl(var(--success));
+  }
+
+  .bg-urgent {
+    background-color: hsl(var(--urgent));
+  }
+
+  .text-urgent {
+    color: hsl(var(--urgent));
+  }
+}
+
+@keyframes typing-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
